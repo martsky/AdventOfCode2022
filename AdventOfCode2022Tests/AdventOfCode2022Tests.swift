@@ -8,28 +8,266 @@
 import XCTest
 
 final class AdventOfCode2022Tests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    private func testForContaining(sectionGroup: [Section]) -> Bool {
+        return sectionGroup[0].containsFully(sectionGroup[1]) || sectionGroup[1].containsFully(sectionGroup[0])
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    private func testForInterSection (sectionGroup: [Section]) -> Bool {
+        return sectionGroup[0].overlaps(sectionGroup[1])
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    
+    func testAoc3puzzl1() throws {
+        let result = try AoCDay3().puzzle1()
+        print (" score is \(result)")
     }
+    
+    func testAoc3puzzl2() throws {
+        let result = try AoCDay3().puzzle2()
+        print (" score is \(result)")
+    }
+    
+    func testAoC4puzzle1Example() throws {
+        var result = 0
+        let input =
+        """
+2-4,6-8
+2-3,4-5
+5-7,7-9
+2-8,3-7
+6-6,4-6
+2-6,4-8
+"""
+        result = try AoCday4().puzzle1(input, test: testForContaining)
+        XCTAssertEqual(2, result,"result was \(result) but should have been 2")
+    }
+    
+    func testAoC4puzzle1() throws {
+        var result = 0
+        let input = try Utils.readFile("inputday4")
+        result = try AoCday4().puzzle1(input, test: testForContaining)
+        print("result is \(result)")
+        XCTAssertEqual(433, result,"result was \(result) but should have been 433")
+    }
+    
+    func testAoC4puzzle2Example() throws {
+        var result = 0
+        let input =
+        """
+        2-4,6-8
+        2-3,4-5
+        5-7,7-9
+        2-8,3-7
+        6-6,4-6
+        2-6,4-8
+        """
+        result = try AoCday4().puzzle1(input, test: testForInterSection)
+        XCTAssertEqual(4, result,"result was \(result) but should have been 2")
+    }
+    
+    func testAoC4puzzle2() throws {
+        var result = 0
+        let input = try Utils.readFile("inputday4")
+        result = try AoCday4().puzzle1(input, test: testForInterSection)
+        print("result is \(result)")
+        XCTAssertEqual(852, result,"result was \(result) but should have been 433")
+    }
+    /*
+     [D]
+ [N] [C]
+ [Z] [M] [P]
+  1   2   3
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+ move 1 from 2 to 1
+ move 3 from 1 to 3
+ move 2 from 2 to 1
+ move 1 from 1 to 2
+     */
+    func testAoC5puzzle1Example() throws {
+        let aoc = AoCDay5()
+        var result = ""
+        let input = try Utils.readFile("inputday5example")
+        
+        let (configuration, instructions) = aoc.parseIntoParts(lines: input)
+        XCTAssertEqual(3, configuration.numOfStacks, "number of stacks wrong")
+        XCTAssertEqual("N", configuration.stacks[0]!.peek())
+        XCTAssertEqual("D", configuration.stacks[1]!.peek())
+        XCTAssertEqual("P", configuration.stacks[2]!.peek())
+        XCTAssertNil(configuration.stacks[3], " there should not be a third stack")
+        print("\(configuration)")
+//        XCTAssertEqual("CMZ", "result was \(result) but should have been CMZ")
+        
+        // check amount
+        XCTAssertEqual(1, instructions.instructions[0].amount, "amount not correctly parsed in instructions")
+        XCTAssertEqual(3, instructions.instructions[1].amount, "amount not correctly parsed in instructions")
+        XCTAssertEqual(2, instructions.instructions[2].amount, "amount not correctly parsed in instructions")
+        XCTAssertEqual(1, instructions.instructions[3].amount, "amount not correctly parsed in instructions")
+        // check fromStack
+        XCTAssertEqual(1, instructions.instructions[0].fromStack, "fromStack not correctly parsed in instructions")
+        XCTAssertEqual(0, instructions.instructions[1].fromStack, "fromStack not correctly parsed in instructions")
+        XCTAssertEqual(1, instructions.instructions[2].fromStack, "fromStack not correctly parsed in instructions")
+        XCTAssertEqual(0, instructions.instructions[3].fromStack, "fromStack not correctly parsed in instructions")
+        // check toStack
+        XCTAssertEqual(0, instructions.instructions[0].toStack, "toStack not correctly parsed in instructions")
+        XCTAssertEqual(2, instructions.instructions[1].toStack, "toStack not correctly parsed in instructions")
+        XCTAssertEqual(0, instructions.instructions[2].toStack, "toStack not correctly parsed in instructions")
+        XCTAssertEqual(1, instructions.instructions[3].toStack, "toStack not correctly parsed in instructions")
+        
+        // now process the instructions
+        configuration.execute1(instructions)
+        result = configuration.getTopCrates()
+        XCTAssertEqual("CMZ", result, "configuration error")
+
+        
+        print ("result is:\n\(result)")
+    }
+    
+    func testAoC5puzzle1() throws {
+        let aoc = AoCDay5()
+        var result = ""
+        let input = try Utils.readFile("inputday5")
+        let (configuration, instructions) = aoc.parseIntoParts(lines: input)
+        configuration.execute1(instructions)
+        result = configuration.getTopCrates()
+//        XCTAssertEqual("CMZ", result, "configuration error")
+        print ("result is:\n\(result)")
+    }
+    
+    func testAoC5puzzle2Example() throws {
+        let aoc = AoCDay5()
+        var result = ""
+        let input = try Utils.readFile("inputday5example")
+        let (configuration, instructions) = aoc.parseIntoParts(lines: input)
+        configuration.execute2(instructions)
+        result = configuration.getTopCrates()
+        XCTAssertEqual("MCD", result, "configuration error")
+        print ("result is:\n\(result)")
+    }
+    
+    func testAoC5puzzle2() throws {
+        let aoc = AoCDay5()
+        var result = ""
+        let input = try Utils.readFile("inputday5")
+        let (configuration, instructions) = aoc.parseIntoParts(lines: input)
+        configuration.execute2(instructions)
+        result = configuration.getTopCrates()
+//        XCTAssertEqual("MCD", result, "configuration error")
+        print ("result is:\n\(result)")
+    }
+    
+    func testAoCDay6Example() throws {
+        let aoc = AoCDay6()
+        let exampleinput = ["mjqjpqmgbljsphdztnvjfqwrcgsmlb": 7, "bvwbjplbgvbhsrlpgdmjqwftvncz": 5, "nppdvjthqldpwncqszvftbrmjlhg": 6, "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg": 10, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw": 11]
+        for example in exampleinput.keys {
+            let result = aoc.process(example, markerLength: 4)
+            print ("result \(String(describing: result?.description))")
+            XCTAssertEqual(exampleinput[example], result)
         }
     }
-
+    
+    func testAoCDay6Puzzle1() throws {
+        let aoc = AoCDay6()
+        let exampleinput = try Utils.readFile("inputday6")
+        let result = aoc.process(exampleinput, markerLength: 4)
+        print ("result \(String(describing: result?.description))")
+    }
+    
+    func testAoCDay6Puzzle2() throws {
+        let aoc = AoCDay6()
+        let exampleinput = try Utils.readFile("inputday6")
+        let result = aoc.process(exampleinput, markerLength: 14)
+        print ("result \(String(describing: result?.description))")
+    }
+    
+    func testAoCDay7Example1() throws {
+        let maxSize = 100000
+        let root = Dir(name: "/", parent: nil)
+        let aoc = AoCDay7(currentDir: root)
+        let input = try Utils.readFile("inputday7example")
+        // parse into a structure that contains the right hierarchy
+        aoc.parse(input)
+        var totalSize = 0
+        root.visitAllDirs { fsItem in // add the size of all directories bigger than maxSize
+            if fsItem.type == .dir && fsItem.size < maxSize {
+                totalSize += fsItem.size
+            }
+        }
+        XCTAssertEqual(95437, totalSize)
+    }
+    
+    func testAoCDay7Puzzle1() throws {
+        let maxSize = 100000
+        let root = Dir(name: "/", parent: nil)
+        let aoc = AoCDay7(currentDir: root)
+        let input = try Utils.readFile("inputday7")
+        // parse into a structure that contains the right hierarchy
+        aoc.parse(input)
+        var totalSize = 0
+        root.visitAllDirs { fsItem in
+            if fsItem.type == .dir && fsItem.size < maxSize {
+                totalSize += fsItem.size
+            }
+        }
+        print("totalSize =\(totalSize)")
+        XCTAssertEqual(1844187, totalSize)
+    }
+    
+    func testAoCDay7ExamplePuzzle2() throws {
+        let totalDiskSpace = 70000000
+        let spaceNeeded = 30000000
+        let root = Dir(name: "/", parent: nil)
+        let aoc = AoCDay7(currentDir: root)
+        let input = try Utils.readFile("inputday7example")
+        // parse into a structure that contains the right hierarchy
+        aoc.parse(input)
+        let usedSpace = root.size
+        let spaceFree = totalDiskSpace - usedSpace
+        let extraSpaceNeeded = spaceNeeded - spaceFree
+        
+        // find the smallest directory that is bigger than the extraSpaceNeeded
+        var smallestSpaceNeeded = 0
+        root.visitAllDirs { fsItem in
+            if fsItem.type == .dir && fsItem.size > extraSpaceNeeded {
+                if smallestSpaceNeeded == 0 {
+                    smallestSpaceNeeded = fsItem.size
+                } else {
+                    if fsItem.size < smallestSpaceNeeded {
+                        smallestSpaceNeeded = fsItem.size
+                    }
+                }
+            }
+        }
+        print ("smallest directorysize needed: \(smallestSpaceNeeded)")
+        XCTAssertEqual(24933642, smallestSpaceNeeded)
+    }
+    
+    func testAoCDay7Puzzle2() throws {
+        let totalDiskSpace = 70000000
+        let spaceNeeded = 30000000
+        let root = Dir(name: "/", parent: nil)
+        let aoc = AoCDay7(currentDir: root)
+        let input = try Utils.readFile("inputday7")
+        // parse into a structure that contains the right hierarchy
+        aoc.parse(input)
+        let usedSpace = root.size
+        let spaceFree = totalDiskSpace - usedSpace
+        let extraSpaceNeeded = spaceNeeded - spaceFree
+        
+        // find the smallest directory that is bigger than the extraSpaceNeeded
+        var smallestSpaceNeeded = 0
+        root.visitAllDirs { fsItem in
+            if fsItem.type == .dir && fsItem.size > extraSpaceNeeded {
+                if smallestSpaceNeeded == 0 {
+                    smallestSpaceNeeded = fsItem.size
+                } else {
+                    if fsItem.size < smallestSpaceNeeded {
+                        smallestSpaceNeeded = fsItem.size
+                    }
+                }
+            }
+        }
+        print ("smallest directorysize needed: \(smallestSpaceNeeded)")
+//        XCTAssertEqual(24933642, smallestSpaceNeeded)
+    }
 }

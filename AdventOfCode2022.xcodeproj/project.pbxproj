@@ -7,13 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B15347532940C20C00A394F8 /* AoCDay6.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15347522940C20C00A394F8 /* AoCDay6.swift */; };
+		B15347542940C2E800A394F8 /* AoCDay6.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15347522940C20C00A394F8 /* AoCDay6.swift */; };
+		B15347582940C7F300A394F8 /* inputday6.txt in Resources */ = {isa = PBXBuildFile; fileRef = B15347572940C7F300A394F8 /* inputday6.txt */; };
+		B153475A2941066500A394F8 /* inputday7example.txt in Resources */ = {isa = PBXBuildFile; fileRef = B15347592941066500A394F8 /* inputday7example.txt */; };
+		B153475C2941068900A394F8 /* AoCDay7.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153475B2941068900A394F8 /* AoCDay7.swift */; };
+		B153475D2941068900A394F8 /* AoCDay7.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153475B2941068900A394F8 /* AoCDay7.swift */; };
+		B153475F29412AEA00A394F8 /* inputday7.txt in Resources */ = {isa = PBXBuildFile; fileRef = B153475E29412AEA00A394F8 /* inputday7.txt */; };
+		B153476029412AEA00A394F8 /* inputday7.txt in Resources */ = {isa = PBXBuildFile; fileRef = B153475E29412AEA00A394F8 /* inputday7.txt */; };
 		B1F63EDF293B2BD80065D714 /* AdventOfCode2022App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63EDE293B2BD80065D714 /* AdventOfCode2022App.swift */; };
 		B1F63EE1293B2BD80065D714 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63EE0293B2BD80065D714 /* ContentView.swift */; };
 		B1F63EE3293B2BDD0065D714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F63EE2293B2BDD0065D714 /* Assets.xcassets */; };
 		B1F63EE7293B2BDD0065D714 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F63EE6293B2BDD0065D714 /* Preview Assets.xcassets */; };
 		B1F63EF1293B2BDE0065D714 /* AdventOfCode2022Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63EF0293B2BDE0065D714 /* AdventOfCode2022Tests.swift */; };
-		B1F63EFB293B2BDE0065D714 /* AdventOfCode2022UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63EFA293B2BDE0065D714 /* AdventOfCode2022UITests.swift */; };
-		B1F63EFD293B2BDE0065D714 /* AdventOfCode2022UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63EFC293B2BDE0065D714 /* AdventOfCode2022UITestsLaunchTests.swift */; };
+		B1F63F0A293B2C500065D714 /* AoC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F09293B2C500065D714 /* AoC.swift */; };
+		B1F63F0C293B34250065D714 /* inputCals.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F0B293B34250065D714 /* inputCals.txt */; };
+		B1F63F0E293B3BF50065D714 /* inputday2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F0D293B3BF50065D714 /* inputday2.txt */; };
+		B1F63F10293B3D0B0065D714 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F0F293B3D0B0065D714 /* Utils.swift */; };
+		B1F63F12293B3DA80065D714 /* AocDay2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F11293B3DA80065D714 /* AocDay2.swift */; };
+		B1F63F14293BA4130065D714 /* AocDay3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F13293BA4130065D714 /* AocDay3.swift */; };
+		B1F63F16293C913B0065D714 /* AocDay3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F13293BA4130065D714 /* AocDay3.swift */; };
+		B1F63F17293C944F0065D714 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F0F293B3D0B0065D714 /* Utils.swift */; };
+		B1F63F18293C955D0065D714 /* inputRucksacks.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F15293BA4760065D714 /* inputRucksacks.txt */; };
+		B1F63F19293C955D0065D714 /* inputRucksacks.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F15293BA4760065D714 /* inputRucksacks.txt */; };
+		B1F63F1B293E25BF0065D714 /* AoCDay4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F1A293E25BF0065D714 /* AoCDay4.swift */; };
+		B1F63F1C293E28470065D714 /* AoCDay4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F1A293E25BF0065D714 /* AoCDay4.swift */; };
+		B1F63F1E293E3CBE0065D714 /* inputday4.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F1D293E3CBE0065D714 /* inputday4.txt */; };
+		B1F63F1F293E3CBE0065D714 /* inputday4.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F1D293E3CBE0065D714 /* inputday4.txt */; };
+		B1F63F21293E53250065D714 /* inputday5.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F20293E53250065D714 /* inputday5.txt */; };
+		B1F63F22293E53250065D714 /* inputday5.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F20293E53250065D714 /* inputday5.txt */; };
+		B1F63F24293E53480065D714 /* inputday5example.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F23293E53480065D714 /* inputday5example.txt */; };
+		B1F63F25293E53480065D714 /* inputday5example.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1F63F23293E53480065D714 /* inputday5example.txt */; };
+		B1F63F27293E53710065D714 /* AoCDay5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F26293E53710065D714 /* AoCDay5.swift */; };
+		B1F63F28293E53710065D714 /* AoCDay5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63F26293E53710065D714 /* AoCDay5.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,16 +50,14 @@
 			remoteGlobalIDString = B1F63EDA293B2BD70065D714;
 			remoteInfo = AdventOfCode2022;
 		};
-		B1F63EF7293B2BDE0065D714 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1F63ED3293B2BD70065D714 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1F63EDA293B2BD70065D714;
-			remoteInfo = AdventOfCode2022;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B15347522940C20C00A394F8 /* AoCDay6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoCDay6.swift; sourceTree = "<group>"; };
+		B15347572940C7F300A394F8 /* inputday6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday6.txt; sourceTree = "<group>"; };
+		B15347592941066500A394F8 /* inputday7example.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday7example.txt; sourceTree = "<group>"; };
+		B153475B2941068900A394F8 /* AoCDay7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoCDay7.swift; sourceTree = "<group>"; };
+		B153475E29412AEA00A394F8 /* inputday7.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday7.txt; sourceTree = "<group>"; };
 		B1F63EDB293B2BD80065D714 /* AdventOfCode2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F63EDE293B2BD80065D714 /* AdventOfCode2022App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2022App.swift; sourceTree = "<group>"; };
 		B1F63EE0293B2BD80065D714 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,9 +66,18 @@
 		B1F63EE6293B2BDD0065D714 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B1F63EEC293B2BDE0065D714 /* AdventOfCode2022Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdventOfCode2022Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F63EF0293B2BDE0065D714 /* AdventOfCode2022Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2022Tests.swift; sourceTree = "<group>"; };
-		B1F63EF6293B2BDE0065D714 /* AdventOfCode2022UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdventOfCode2022UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F63EFA293B2BDE0065D714 /* AdventOfCode2022UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2022UITests.swift; sourceTree = "<group>"; };
-		B1F63EFC293B2BDE0065D714 /* AdventOfCode2022UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2022UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B1F63F09293B2C500065D714 /* AoC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoC.swift; sourceTree = "<group>"; };
+		B1F63F0B293B34250065D714 /* inputCals.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputCals.txt; sourceTree = "<group>"; };
+		B1F63F0D293B3BF50065D714 /* inputday2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday2.txt; sourceTree = "<group>"; };
+		B1F63F0F293B3D0B0065D714 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B1F63F11293B3DA80065D714 /* AocDay2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AocDay2.swift; sourceTree = "<group>"; };
+		B1F63F13293BA4130065D714 /* AocDay3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AocDay3.swift; sourceTree = "<group>"; };
+		B1F63F15293BA4760065D714 /* inputRucksacks.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputRucksacks.txt; sourceTree = "<group>"; };
+		B1F63F1A293E25BF0065D714 /* AoCDay4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoCDay4.swift; sourceTree = "<group>"; };
+		B1F63F1D293E3CBE0065D714 /* inputday4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday4.txt; sourceTree = "<group>"; };
+		B1F63F20293E53250065D714 /* inputday5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday5.txt; sourceTree = "<group>"; };
+		B1F63F23293E53480065D714 /* inputday5example.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday5example.txt; sourceTree = "<group>"; };
+		B1F63F26293E53710065D714 /* AoCDay5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoCDay5.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +95,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1F63EF3293B2BDE0065D714 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,7 +103,6 @@
 			children = (
 				B1F63EDD293B2BD80065D714 /* AdventOfCode2022 */,
 				B1F63EEF293B2BDE0065D714 /* AdventOfCode2022Tests */,
-				B1F63EF9293B2BDE0065D714 /* AdventOfCode2022UITests */,
 				B1F63EDC293B2BD80065D714 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +112,6 @@
 			children = (
 				B1F63EDB293B2BD80065D714 /* AdventOfCode2022.app */,
 				B1F63EEC293B2BDE0065D714 /* AdventOfCode2022Tests.xctest */,
-				B1F63EF6293B2BDE0065D714 /* AdventOfCode2022UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,11 +119,28 @@
 		B1F63EDD293B2BD80065D714 /* AdventOfCode2022 */ = {
 			isa = PBXGroup;
 			children = (
+				B15347522940C20C00A394F8 /* AoCDay6.swift */,
+				B1F63F26293E53710065D714 /* AoCDay5.swift */,
+				B1F63F1A293E25BF0065D714 /* AoCDay4.swift */,
+				B1F63F13293BA4130065D714 /* AocDay3.swift */,
 				B1F63EDE293B2BD80065D714 /* AdventOfCode2022App.swift */,
 				B1F63EE0293B2BD80065D714 /* ContentView.swift */,
+				B1F63F09293B2C500065D714 /* AoC.swift */,
+				B1F63F11293B3DA80065D714 /* AocDay2.swift */,
+				B1F63F0F293B3D0B0065D714 /* Utils.swift */,
 				B1F63EE2293B2BDD0065D714 /* Assets.xcassets */,
+				B1F63F1D293E3CBE0065D714 /* inputday4.txt */,
+				B15347592941066500A394F8 /* inputday7example.txt */,
+				B1F63F0B293B34250065D714 /* inputCals.txt */,
+				B15347572940C7F300A394F8 /* inputday6.txt */,
+				B1F63F0D293B3BF50065D714 /* inputday2.txt */,
+				B1F63F15293BA4760065D714 /* inputRucksacks.txt */,
 				B1F63EE4293B2BDD0065D714 /* AdventOfCode2022.entitlements */,
 				B1F63EE5293B2BDD0065D714 /* Preview Content */,
+				B1F63F20293E53250065D714 /* inputday5.txt */,
+				B1F63F23293E53480065D714 /* inputday5example.txt */,
+				B153475B2941068900A394F8 /* AoCDay7.swift */,
+				B153475E29412AEA00A394F8 /* inputday7.txt */,
 			);
 			path = AdventOfCode2022;
 			sourceTree = "<group>";
@@ -118,15 +159,6 @@
 				B1F63EF0293B2BDE0065D714 /* AdventOfCode2022Tests.swift */,
 			);
 			path = AdventOfCode2022Tests;
-			sourceTree = "<group>";
-		};
-		B1F63EF9293B2BDE0065D714 /* AdventOfCode2022UITests */ = {
-			isa = PBXGroup;
-			children = (
-				B1F63EFA293B2BDE0065D714 /* AdventOfCode2022UITests.swift */,
-				B1F63EFC293B2BDE0065D714 /* AdventOfCode2022UITestsLaunchTests.swift */,
-			);
-			path = AdventOfCode2022UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,24 +199,6 @@
 			productReference = B1F63EEC293B2BDE0065D714 /* AdventOfCode2022Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B1F63EF5293B2BDE0065D714 /* AdventOfCode2022UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1F63F06293B2BDE0065D714 /* Build configuration list for PBXNativeTarget "AdventOfCode2022UITests" */;
-			buildPhases = (
-				B1F63EF2293B2BDE0065D714 /* Sources */,
-				B1F63EF3293B2BDE0065D714 /* Frameworks */,
-				B1F63EF4293B2BDE0065D714 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1F63EF8293B2BDE0065D714 /* PBXTargetDependency */,
-			);
-			name = AdventOfCode2022UITests;
-			productName = AdventOfCode2022UITests;
-			productReference = B1F63EF6293B2BDE0065D714 /* AdventOfCode2022UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,10 +213,6 @@
 						CreatedOnToolsVersion = 14.1;
 					};
 					B1F63EEB293B2BDE0065D714 = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = B1F63EDA293B2BD70065D714;
-					};
-					B1F63EF5293B2BDE0065D714 = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = B1F63EDA293B2BD70065D714;
 					};
@@ -223,7 +233,6 @@
 			targets = (
 				B1F63EDA293B2BD70065D714 /* AdventOfCode2022 */,
 				B1F63EEB293B2BDE0065D714 /* AdventOfCode2022Tests */,
-				B1F63EF5293B2BDE0065D714 /* AdventOfCode2022UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,7 +243,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1F63EE7293B2BDD0065D714 /* Preview Assets.xcassets in Resources */,
+				B1F63F24293E53480065D714 /* inputday5example.txt in Resources */,
+				B1F63F0C293B34250065D714 /* inputCals.txt in Resources */,
+				B153475A2941066500A394F8 /* inputday7example.txt in Resources */,
+				B1F63F18293C955D0065D714 /* inputRucksacks.txt in Resources */,
 				B1F63EE3293B2BDD0065D714 /* Assets.xcassets in Resources */,
+				B1F63F0E293B3BF50065D714 /* inputday2.txt in Resources */,
+				B1F63F1E293E3CBE0065D714 /* inputday4.txt in Resources */,
+				B1F63F21293E53250065D714 /* inputday5.txt in Resources */,
+				B15347582940C7F300A394F8 /* inputday6.txt in Resources */,
+				B153475F29412AEA00A394F8 /* inputday7.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,13 +260,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1F63EF4293B2BDE0065D714 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				B1F63F19293C955D0065D714 /* inputRucksacks.txt in Resources */,
+				B1F63F25293E53480065D714 /* inputday5example.txt in Resources */,
+				B153476029412AEA00A394F8 /* inputday7.txt in Resources */,
+				B1F63F1F293E3CBE0065D714 /* inputday4.txt in Resources */,
+				B1F63F22293E53250065D714 /* inputday5.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +275,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F63F1B293E25BF0065D714 /* AoCDay4.swift in Sources */,
+				B1F63F14293BA4130065D714 /* AocDay3.swift in Sources */,
+				B1F63F0A293B2C500065D714 /* AoC.swift in Sources */,
 				B1F63EE1293B2BD80065D714 /* ContentView.swift in Sources */,
+				B153475C2941068900A394F8 /* AoCDay7.swift in Sources */,
+				B15347532940C20C00A394F8 /* AoCDay6.swift in Sources */,
 				B1F63EDF293B2BD80065D714 /* AdventOfCode2022App.swift in Sources */,
+				B1F63F10293B3D0B0065D714 /* Utils.swift in Sources */,
+				B1F63F27293E53710065D714 /* AoCDay5.swift in Sources */,
+				B1F63F12293B3DA80065D714 /* AocDay2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,16 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F63F16293C913B0065D714 /* AocDay3.swift in Sources */,
+				B15347542940C2E800A394F8 /* AoCDay6.swift in Sources */,
+				B1F63F1C293E28470065D714 /* AoCDay4.swift in Sources */,
 				B1F63EF1293B2BDE0065D714 /* AdventOfCode2022Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1F63EF2293B2BDE0065D714 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1F63EFD293B2BDE0065D714 /* AdventOfCode2022UITestsLaunchTests.swift in Sources */,
-				B1F63EFB293B2BDE0065D714 /* AdventOfCode2022UITests.swift in Sources */,
+				B1F63F17293C944F0065D714 /* Utils.swift in Sources */,
+				B153475D2941068900A394F8 /* AoCDay7.swift in Sources */,
+				B1F63F28293E53710065D714 /* AoCDay5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,11 +309,6 @@
 			isa = PBXTargetDependency;
 			target = B1F63EDA293B2BD70065D714 /* AdventOfCode2022 */;
 			targetProxy = B1F63EED293B2BDE0065D714 /* PBXContainerItemProxy */;
-		};
-		B1F63EF8293B2BDE0065D714 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1F63EDA293B2BD70065D714 /* AdventOfCode2022 */;
-			targetProxy = B1F63EF7293B2BDE0065D714 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -528,50 +544,6 @@
 			};
 			name = Release;
 		};
-		B1F63F07293B2BDE0065D714 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3U6SJ73Y5T;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.mw.adventofcode2022.AdventOfCode2022UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AdventOfCode2022;
-			};
-			name = Debug;
-		};
-		B1F63F08293B2BDE0065D714 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3U6SJ73Y5T;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.mw.adventofcode2022.AdventOfCode2022UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AdventOfCode2022;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -598,15 +570,6 @@
 			buildConfigurations = (
 				B1F63F04293B2BDE0065D714 /* Debug */,
 				B1F63F05293B2BDE0065D714 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1F63F06293B2BDE0065D714 /* Build configuration list for PBXNativeTarget "AdventOfCode2022UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1F63F07293B2BDE0065D714 /* Debug */,
-				B1F63F08293B2BDE0065D714 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
