@@ -62,10 +62,6 @@ class Dir: FSItem {
     }
 }
 
-struct FileSystem {
-    
-}
-
 class AoCDay7 {
     var currentDir: Dir
     
@@ -81,18 +77,13 @@ class AoCDay7 {
                 i += 1 // the next word contains the name of the directory
                 if words[i] == ".." { // we switch to the parent directory
                     currentDir = currentDir.parent!
-                } else {
+                } else { // switch to a subdirectory
                     guard let newDir = currentDir.subItems[words[i]], newDir.type == .dir else {
                         fatalError("cd to \(words[i]) not possible")
                     }
                     currentDir = newDir as! Dir
                     break
                 }
-//            case "ls": // the following lines until "$" are contents of the current directory. We need to add them to the current dir.
-//                print("ls")
-//                break
-//            case "dir":
-//                print("dir  ")
             default:
                 print("command: \(words[i])")
             }

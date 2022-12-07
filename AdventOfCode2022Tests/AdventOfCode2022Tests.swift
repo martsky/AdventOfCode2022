@@ -268,6 +268,6 @@ final class AdventOfCode2022Tests: XCTestCase {
             }
         }
         print ("smallest directorysize needed: \(smallestSpaceNeeded)")
-//        XCTAssertEqual(24933642, smallestSpaceNeeded)
+        XCTAssertEqual(4978279, smallestSpaceNeeded)
     }
 }
