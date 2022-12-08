@@ -31,7 +31,6 @@ struct Section {
 class AoCday4 {
     
     func puzzle1(_ input: String, test: ([Section]) -> Bool ) throws -> Int {
-        var result = 0
         let sections = input.split(separator: "\n") // split into [String] of lines [2-4,6-8]
         print ("sections\(sections)")
         let sectionGroups: [[Section]]  = sections.map {
@@ -44,13 +43,13 @@ class AoCday4 {
                 }
             return sections
         } // split into [[Section]]
-        sectionGroups.reduce(into: result) { partialResult, sectionGroup in //count the overlapping results i one sectionGroup
+        let result = sectionGroups.reduce(0) { partialResult, sectionGroup in //count the overlapping results i one sectionGroup
             var countWithin = 0
             if test(sectionGroup) { // compare sections for intersection or containing
                 countWithin += 1
             }
             print ("count is \(countWithin)")
-            result += countWithin
+            return partialResult + countWithin
         }
         print ("count = \(result)")
         return result
