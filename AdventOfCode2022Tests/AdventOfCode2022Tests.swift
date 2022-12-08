@@ -270,4 +270,77 @@ final class AdventOfCode2022Tests: XCTestCase {
         print ("smallest directorysize needed: \(smallestSpaceNeeded)")
         XCTAssertEqual(4978279, smallestSpaceNeeded)
     }
+    
+    
+    /*
+     30373
+     25512
+     65332
+     33549
+     35390
+     
+     visible if item [x,y] is visible if [x-1,y], [x+1,y] [x, y-1] and [x,y+1] < [x,y].size
+     */
+    func testDay81Example() throws {
+        let input = try Utils.readFile("inputday8example")
+        let aoc = AocDay8()
+        let forest = aoc.parse(input)
+        XCTAssertEqual(5, forest.rows)
+        XCTAssertEqual(5, forest.columns)
+        XCTAssertEqual(3, forest[0,0]?.size)
+        XCTAssertEqual(5, forest[1,1]?.size)
+        XCTAssertEqual(3, forest[2,2]?.size)
+        XCTAssertEqual(4, forest[3,3]?.size)
+        XCTAssertEqual(0, forest[4,4]?.size)
+        
+        let totalVisibleInteriorTrees = try aoc.totalVisibleInteriorTrees(forest)
+        print("total visible trees:\(totalVisibleInteriorTrees)")
+        XCTAssertEqual(5, totalVisibleInteriorTrees)
+        let total = totalVisibleInteriorTrees + (forest.rows * 2) + ((forest.columns * 2)-4)
+        XCTAssertEqual(21, total)
+    }
+    
+    func testDay81Example2() throws {
+        let input =
+        """
+        888
+        818
+        888
+        """
+        let aoc = AocDay8()
+        let forest = aoc.parse(input)
+        let totalVisibleInteriorTrees = try aoc.totalVisibleInteriorTrees(forest)
+        print("total visible trees:\(totalVisibleInteriorTrees)")
+        XCTAssertEqual(0, totalVisibleInteriorTrees)
+    }
+    
+    func testDay81() throws {
+        let input = try Utils.readFile("inputday8")
+        let aoc = AocDay8()
+        let forest = aoc.parse(input)
+        let totalVisibleInteriorTrees = try aoc.totalVisibleInteriorTrees(forest)
+        // add all the exterior trees
+        let total = totalVisibleInteriorTrees + (forest.rows * 2) + ((forest.columns * 2)-4)
+        print("total visible trees:\(total)")
+    }
+    
+    func testDay82Example() throws {
+        let input = try Utils.readFile("inputday8example")
+        let aoc = AocDay8()
+        let forest = aoc.parse(input)
+        let score = try aoc.maxScenicScore(forest)
+        // add all the exterior trees
+        XCTAssertEqual(8, score)
+        print("max scenic score is:\(score)")
+    }
+    
+    func testDay82() throws {
+        let input = try Utils.readFile("inputday8")
+        let aoc = AocDay8()
+        let forest = aoc.parse(input)
+        let score = try aoc.maxScenicScore(forest)
+        // add all the exterior trees
+        print("max scenic score is:\(score)")
+        XCTAssertEqual(287040, score)
+    }
 }

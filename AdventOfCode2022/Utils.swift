@@ -13,6 +13,15 @@ enum FileError: Error {
     case InvalidString
 }
 
+extension String {
+    func parseIntoLines() -> [String] {
+        return  self.split(separator: "\n").map { String($0) }
+    }
+    subscript(idx: Int) -> String {
+        String(self[index(startIndex, offsetBy: idx)])
+    }
+}
+
 class Utils {
     
     static func readFile(_ fileName: String) throws -> String {
@@ -22,5 +31,9 @@ class Utils {
         } else {
             throw FileError.InvalidURl
         }
+    }
+    
+    static func parseIntoLines(_ input: String) -> [String] {
+        return  input.split(separator: "\n").map { String($0) }
     }
 }

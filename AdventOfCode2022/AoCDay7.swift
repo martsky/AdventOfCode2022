@@ -100,7 +100,7 @@ class AoCDay7 {
     }
     
     func parse(_ input: String) {
-        let lines: [String] = input.split(separator: "\n").dropFirst().map {String($0)}// parse into lines, the first line is $ cd / and we already know what to do
+        let lines: [String] = input.parseIntoLines().dropFirst().map {String($0)}// parse into lines, the first line is $ cd / and we already know what to do
         for line in lines {
             let words: [String] = line.split(separator: " ").map { String($0) }
             switch words[0] {
