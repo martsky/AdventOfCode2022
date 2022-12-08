@@ -64,7 +64,7 @@ struct Matrix<T> {
             return nil
         }
         //left from 1,4 of a matrix(5x5)should be grid[5...9]
-        return grid[(row * columns...(row * columns + column - 1))].map{$0!}
+        return grid[(row * columns...(row * columns + column - 1))].map{$0!}.reversed()
     }
     
     func right(row: Int, column: Int) -> [T]? {
@@ -128,6 +128,8 @@ class AocDay8 {
         return totalVisibleInteriorTrees
     }
     
+
+
     func maxScenicScore (_ forest: Matrix<Tree>) throws -> Int {
         var maxScenicScore = 0
         for row in 0...forest.rows-1 {
@@ -135,7 +137,9 @@ class AocDay8 {
                 let tree = forest[row, col]!
                 
                 var stop = false
-                let scenicScoreAbove: Int = forest.above(row: row, column: col)?.reduce(0) { partialResult, t in
+                // closure to filter the array on the left, right, above and below of the tree for trees that are lower.
+                // to determine the scenic view
+                let filterScenicView: (Int, Tree) -> Int = { partialResult, t in
                     if stop {
                         return partialResult
                     }
@@ -143,42 +147,18 @@ class AocDay8 {
                         stop = true
                     }
                     return partialResult + 1
-                } ?? 0
+                }
                 
+                let scenicScoreAbove: Int = forest.above(row: row, column: col)?.reduce(0, filterScenicView) ?? 0
                 stop = false
-                let scenicScoreBelow: Int = forest.below(row: row, column: col)?.reduce(0) { partialResult, t in
-                    if stop {
-                        return partialResult
-                    }
-                    if t.size >= tree.size {
-                        stop = true
-                    }
-                    return partialResult + 1
-                } ?? 0
-                
+                let scenicScoreBelow: Int = forest.below(row: row, column: col)?.reduce(0, filterScenicView) ?? 0
                 stop = false
-                let scenicScoreLeft: Int = forest.left(row: row, column: col)?.reversed().reduce(0) { partialResult, t in
-                    if stop {
-                        return partialResult
-                    }
-                    if t.size >= tree.size {
-                        stop = true
-                    }
-                    return partialResult + 1
-                } ?? 0
-                
+                let scenicScoreLeft: Int = forest.left(row: row, column: col)?.reduce(0, filterScenicView) ?? 0
                 stop = false
-                let scenicScoreRight: Int = forest.right(row: row, column: col)?.reduce(0) { partialResult, t in
-                    if stop {
-                        return partialResult
-                    }
-                    if t.size >= tree.size {
-                        stop = true
-                    }
-                    return partialResult + 1
-                } ?? 0
+                let scenicScoreRight: Int = forest.right(row: row, column: col)?.reduce(0, filterScenicView) ?? 0
                 
                 let totalScenicScore = scenicScoreLeft * scenicScoreAbove * scenicScoreBelow * scenicScoreRight
+                // we are only interested in the maximum
                 if totalScenicScore > maxScenicScore {
                     maxScenicScore = totalScenicScore
                 }
