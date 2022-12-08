@@ -319,7 +319,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         let aoc = AocDay8()
         let forest = aoc.parse(input)
         let totalVisibleInteriorTrees = try aoc.totalVisibleInteriorTrees(forest)
-        // add all the exterior trees
+        // add all the exterior trees.
         let total = totalVisibleInteriorTrees + (forest.rows * 2) + ((forest.columns * 2)-4)
         print("total visible trees:\(total)")
     }
@@ -329,7 +329,6 @@ final class AdventOfCode2022Tests: XCTestCase {
         let aoc = AocDay8()
         let forest = aoc.parse(input)
         let score = try aoc.maxScenicScore(forest)
-        // add all the exterior trees
         XCTAssertEqual(8, score)
         print("max scenic score is:\(score)")
     }
@@ -339,7 +338,6 @@ final class AdventOfCode2022Tests: XCTestCase {
         let aoc = AocDay8()
         let forest = aoc.parse(input)
         let score = try aoc.maxScenicScore(forest)
-        // add all the exterior trees
         print("max scenic score is:\(score)")
         XCTAssertEqual(287040, score)
     }

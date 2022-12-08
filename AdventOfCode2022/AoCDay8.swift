@@ -34,11 +34,15 @@ struct Matrix<T> {
             grid[(row * columns) + column] = newValue
         }
     }
-    
+    /*
+       01234
+     0 30373
+     1 25512
+     2 65332
+     */
     func above(row: Int, column: Int) -> [T]? {
-        guard row > 0 else{
-            return nil
-        }
+        guard row > 0 else{ return nil }
+        // would love to get this a bit more elegant using functional approach but can't figure out how
         var array = [T]()
         var index = row - 1
         while index >= 0 {
@@ -49,9 +53,7 @@ struct Matrix<T> {
     }
     
     func below(row: Int, column: Int) -> [T]? {
-        guard row < rows-1 else{
-            return nil
-        }
+        guard row < rows-1 else{ return nil }
         var array = [T]()
         for r in row+1...rows-1 {
             array.append(self[r, column]!)
@@ -60,22 +62,14 @@ struct Matrix<T> {
     }
     
     func left(row: Int, column: Int) -> [T]? {
-        guard column > 0 else {
-            return nil
-        }
-        //left from 1,4 of a matrix(5x5)should be grid[5...9]
+        guard column > 0 else { return nil }
+        // array gotta be reversed because we need to iterate from the specified tree at the center
         return grid[(row * columns...(row * columns + column - 1))].map{$0!}.reversed()
     }
     
     func right(row: Int, column: Int) -> [T]? {
-        guard column < columns-1 else{
-            return nil
-        }
-        //right from 1,4 of a matrix(5x5)should be grid[10...10]
-
+        guard column < columns-1 else { return nil }
         return grid[(row * columns + column + 1...(((row + 1) * columns-1)))].map{$0!}
-        
-        // 0*5 +4 + 1= 5 ... 0+1 * 5-1
     }
 }
 
@@ -84,16 +78,6 @@ class AocDay8 {
     
     func parse(_ input: String) -> Matrix<Tree> {
         let lines = input.parseIntoLines()
-        // parse into n dimensional array
-        /*
-         30373
-         25512
-         65332
-         33549
-         35390
-         
-         visible if item [x,y] is visible if [x-1,y], [x+1,y] [x, y-1] and [x,y+1] < [x,y].size
-         */
         var forest = Matrix<Tree>(rows: lines.count, columns: lines[0].count)
         for row in 0...lines.count-1 {
             let line = lines[row]
@@ -135,7 +119,6 @@ class AocDay8 {
         for row in 0...forest.rows-1 {
             for col in 0...forest.columns-1 {
                 let tree = forest[row, col]!
-                
                 var stop = false
                 // closure to filter the array on the left, right, above and below of the tree for trees that are lower.
                 // to determine the scenic view
@@ -158,6 +141,7 @@ class AocDay8 {
                 let scenicScoreRight: Int = forest.right(row: row, column: col)?.reduce(0, filterScenicView) ?? 0
                 
                 let totalScenicScore = scenicScoreLeft * scenicScoreAbove * scenicScoreBelow * scenicScoreRight
+                
                 // we are only interested in the maximum
                 if totalScenicScore > maxScenicScore {
                     maxScenicScore = totalScenicScore
