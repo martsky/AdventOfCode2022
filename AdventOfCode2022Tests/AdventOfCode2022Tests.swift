@@ -341,4 +341,156 @@ final class AdventOfCode2022Tests: XCTestCase {
         print("max scenic score is:\(score)")
         XCTAssertEqual(287040, score)
     }
+    
+    func testDay9InputParsing() throws {
+        let input = try Utils.readFile("inputday9example")
+        let aoc = AoCDay9()
+        //parse the input into a program containing a series of commands
+        let commands = aoc.parse(input)
+        XCTAssertEqual(commands[0].0, .Right)
+        XCTAssertEqual(commands[0].1, 4)
+        XCTAssertEqual(commands[1].0, .Up)
+        XCTAssertEqual(commands[1].1, 4)
+        XCTAssertEqual(commands[2].0, .Left)
+        XCTAssertEqual(commands[2].1, 3)
+    }
+    
+    /// We are playing Snake!
+    func testDay9BasicMovement() throws {
+        let head = Head()
+        let tail = Tail()
+        
+        var tailPos = tail.curPos()
+        var headPos = head.move(cmd: .Up)
+
+        XCTAssertEqual(headPos.x, 0)
+        XCTAssertEqual(headPos.y, 1)
+        if let tailCmd = tail.calcCommand(headPosition: headPos) {
+            tailPos = tail.move(cmd: tailCmd)
+        }
+        // head moved up
+        // tail did not move
+        XCTAssertEqual(tailPos.x, 0)
+        XCTAssertEqual(tailPos.y, 0)
+        headPos = head.move(cmd: .Up)
+        // head moved up
+        XCTAssertEqual(headPos.x, 0)
+        XCTAssertEqual(headPos.y, 2)
+        if let tailCmd = tail.calcCommand(headPosition: headPos) {
+            XCTAssertEqual(tailCmd, .Up)
+            tailPos = tail.move(cmd: tailCmd)
+        }
+        // tail moved up 1
+        XCTAssertEqual(tailPos.x, 0)
+        XCTAssertEqual(tailPos.y, 1)
+        XCTAssertTrue(tail.visited.contains(Position(0,0)))
+        XCTAssertTrue(tail.visited.contains(Position(0,1)))
+        XCTAssertEqual(2, tail.visited.count)
+
+        
+        // head moved right
+        headPos = head.move(cmd: .Right)
+        XCTAssertEqual(headPos.x, 1)
+        XCTAssertEqual(headPos.y, 2)
+        if let tailCmd = tail.calcCommand(headPosition: headPos) {
+            tailPos = tail.move(cmd: tailCmd)
+        }
+        // tail stayed the same
+        XCTAssertEqual(tailPos.x, 0)
+        XCTAssertEqual(tailPos.y, 1)
+        // head moved right
+        headPos = head.move(cmd: .Right)
+        XCTAssertEqual(headPos.x, 2)
+        XCTAssertEqual(headPos.y, 2)
+        if let tailCmd = tail.calcCommand(headPosition: headPos) {
+            XCTAssertEqual(.UpRight, tailCmd)
+            tailPos = tail.move(cmd: tailCmd)
+        }
+        // tail moved diagonally
+        XCTAssertEqual(tailPos.x, 1)
+        XCTAssertEqual(tailPos.y, 2)
+        // head moved left
+        headPos = head.move(cmd: .Left)
+        XCTAssertEqual(headPos.x, 1)
+        XCTAssertEqual(headPos.y, 2)
+        if let tailCmd = tail.calcCommand(headPosition: headPos) {
+            tailPos = tail.move(cmd: tailCmd)
+        }
+        // tail stayed the same
+        XCTAssertEqual(tailPos.x, 1)
+        XCTAssertEqual(tailPos.y, 2)
+        // head moved left
+        headPos = head.move(cmd: .Left)
+        XCTAssertEqual(headPos.x, 0)
+        XCTAssertEqual(headPos.y, 2)
+        if let tailCmd = tail.calcCommand(headPosition: headPos) {
+            tailPos = tail.move(cmd: tailCmd)
+        }
+        // tail stayed the same
+        XCTAssertEqual(tailPos.x, 1)
+        XCTAssertEqual(tailPos.y, 2)
+        
+        // now we move the whole snake to the left
+        var snake = Snake(head: head, tail: tail)
+        snake = snake.move(cmd: .Left)
+        headPos = snake.head.curPos()
+        tailPos = snake.tail.curPos()
+        XCTAssertEqual(headPos.x,-1)
+        XCTAssertEqual(headPos.y, 2)
+        XCTAssertEqual(tailPos.x, 0)
+        XCTAssertEqual(tailPos.y, 2)
+        
+        // move3 times down
+        snake = snake.move(cmd: .Down).move(cmd: .Down).move(cmd: .Down)
+        headPos = snake.head.curPos()
+        tailPos = snake.tail.curPos()
+        XCTAssertEqual(headPos.x,-1)
+        XCTAssertEqual(headPos.y,-1)
+        XCTAssertEqual(tailPos.x, -1)
+        XCTAssertEqual(tailPos.y, 0)
+        
+    }
+    
+    func testDay9Example() throws {
+        let input = try Utils.readFile("inputday9example")
+        let aoc = AoCDay9()
+        //parse the input into a program containing a series of commands
+        let commands = aoc.parse(input)
+        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
+        //and keep a history of visited locations as [x,y] coordinates
+        let head = Head()
+        let tail = Tail()
+        var snake = Snake(head: head, tail: tail)
+        for command in commands {
+            let (cmd, steps) = command
+            print("moving \(cmd) for \(steps)")
+            for _ in 0..<steps {
+                snake = snake.move(cmd: cmd)
+                print("moved ")
+            }
+        }
+        XCTAssertEqual(13, snake.tail.visited.count)
+    }
+    
+    func testDay91() throws {
+        let input = try Utils.readFile("inputday9")
+        let aoc = AoCDay9()
+        //parse the input into a program containing a series of commands
+        let commands = aoc.parse(input)
+        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
+        //and keep a history of visited locations as [x,y] coordinates
+        let head = Head()
+        let tail = Tail()
+        var snake = Snake(head: head, tail: tail)
+        for command in commands {
+            let (cmd, steps) = command
+            print("moving \(cmd) for \(steps)")
+            for _ in 0..<steps {
+                snake = snake.move(cmd: cmd)
+                print("moved ")
+            }
+        }
+        print("visited: \(snake.tail.visited.count)")
+        XCTAssertEqual(6464, snake.tail.visited.count)
+    }
 }
