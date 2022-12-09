@@ -70,15 +70,24 @@ class SnakePart {
 
 struct Snake  {
     let head: Head
-    let tail: Tail
+    let body: [Tail]
+    func tail() -> Tail {
+        return body.last!
+    }
     
     func move(cmd: Command) -> Snake{
         let headPos = head.move(cmd: cmd)
-        print("head(\(headPos))")
-        if let tailCmd = tail.calcCommand(headPosition: headPos) {
-            let tailPos = tail.move(cmd: tailCmd)
-            print("tail(\(tailPos))")
-
+        print("head (\(headPos))")
+        var partPos = headPos
+        var i = 0
+        for part in body {
+            if let tailCmd = part.calcCommand(headPosition: partPos) {
+                partPos = part.move(cmd: tailCmd)
+                print("part[\(i)] (\(partPos)) moved \(tailCmd), visited = \(part.visited.count)")
+            } else { // Gosh, this was tricky. If a part did not move we should not move the rest of the body parts.
+                break
+            }
+            i += 1
         }
         return self
     }

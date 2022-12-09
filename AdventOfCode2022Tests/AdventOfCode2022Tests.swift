@@ -431,10 +431,11 @@ final class AdventOfCode2022Tests: XCTestCase {
         XCTAssertEqual(tailPos.y, 2)
         
         // now we move the whole snake to the left
-        var snake = Snake(head: head, tail: tail)
+        let body = [tail]
+        var snake = Snake(head: head, body: body)
         snake = snake.move(cmd: .Left)
         headPos = snake.head.curPos()
-        tailPos = snake.tail.curPos()
+        tailPos = snake.tail().curPos()
         XCTAssertEqual(headPos.x,-1)
         XCTAssertEqual(headPos.y, 2)
         XCTAssertEqual(tailPos.x, 0)
@@ -443,7 +444,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         // move3 times down
         snake = snake.move(cmd: .Down).move(cmd: .Down).move(cmd: .Down)
         headPos = snake.head.curPos()
-        tailPos = snake.tail.curPos()
+        tailPos = snake.tail().curPos()
         XCTAssertEqual(headPos.x,-1)
         XCTAssertEqual(headPos.y,-1)
         XCTAssertEqual(tailPos.x, -1)
@@ -459,8 +460,8 @@ final class AdventOfCode2022Tests: XCTestCase {
         //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
         //and keep a history of visited locations as [x,y] coordinates
         let head = Head()
-        let tail = Tail()
-        var snake = Snake(head: head, tail: tail)
+        let body = [Tail()]
+        var snake = Snake(head: head, body: body)
         for command in commands {
             let (cmd, steps) = command
             print("moving \(cmd) for \(steps)")
@@ -469,7 +470,7 @@ final class AdventOfCode2022Tests: XCTestCase {
                 print("moved ")
             }
         }
-        XCTAssertEqual(13, snake.tail.visited.count)
+        XCTAssertEqual(13, snake.tail().visited.count)
     }
     
     func testDay91() throws {
@@ -480,8 +481,8 @@ final class AdventOfCode2022Tests: XCTestCase {
         //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
         //and keep a history of visited locations as [x,y] coordinates
         let head = Head()
-        let tail = Tail()
-        var snake = Snake(head: head, tail: tail)
+        let body = [Tail()]
+        var snake = Snake(head: head, body: body)
         for command in commands {
             let (cmd, steps) = command
             print("moving \(cmd) for \(steps)")
@@ -490,7 +491,51 @@ final class AdventOfCode2022Tests: XCTestCase {
                 print("moved ")
             }
         }
-        print("visited: \(snake.tail.visited.count)")
-        XCTAssertEqual(6464, snake.tail.visited.count)
+        print("visited: \(snake.tail().visited.count)")
+        XCTAssertEqual(6464, snake.tail().visited.count)
+    }
+    
+    func testDay92Example() throws {
+        let input = try Utils.readFile("inputday9example2")
+        let aoc = AoCDay9()
+        //parse the input into a program containing a series of commands
+        let commands = aoc.parse(input)
+        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
+        //and keep a history of visited locations as [x,y] coordinates
+        let head = Head()
+        let body = [Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail()]
+        var snake = Snake(head: head, body: body)
+        for command in commands {
+            let (cmd, steps) = command
+            print("moving \(cmd) for \(steps)")
+            for _ in 0..<steps {
+                snake = snake.move(cmd: cmd)
+                print("moved ")
+            }
+        }
+        print("visited: \(snake.tail().visited.count)")
+        XCTAssertEqual(36, snake.tail().visited.count)
+    }
+    
+    func testDay92() throws {
+        let input = try Utils.readFile("inputday9")
+        let aoc = AoCDay9()
+        //parse the input into a program containing a series of commands
+        let commands = aoc.parse(input)
+        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
+        //and keep a history of visited locations as [x,y] coordinates
+        let head = Head()
+        let body = [Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail()]
+        var snake = Snake(head: head, body: body)
+        for command in commands {
+            let (cmd, steps) = command
+            print("moving \(cmd) for \(steps)")
+            for _ in 0..<steps {
+                snake = snake.move(cmd: cmd)
+                print("moved ")
+            }
+        }
+        print("visited: \(snake.tail().visited.count)")
+//        XCTAssertEqual(6464, snake.tail().visited.count)
     }
 }

@@ -29,6 +29,8 @@
 		B15347722943120A00A394F8 /* inputday9example.txt in Resources */ = {isa = PBXBuildFile; fileRef = B15347702943120A00A394F8 /* inputday9example.txt */; };
 		B15347742943D4B900A394F8 /* inputday9.txt in Resources */ = {isa = PBXBuildFile; fileRef = B15347732943D4B900A394F8 /* inputday9.txt */; };
 		B15347752943D4B900A394F8 /* inputday9.txt in Resources */ = {isa = PBXBuildFile; fileRef = B15347732943D4B900A394F8 /* inputday9.txt */; };
+		B15347772943F30F00A394F8 /* inputday9example2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B15347762943F30F00A394F8 /* inputday9example2.txt */; };
+		B15347782943F30F00A394F8 /* inputday9example2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B15347762943F30F00A394F8 /* inputday9example2.txt */; };
 		B1F63EDF293B2BD80065D714 /* AdventOfCode2022App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63EDE293B2BD80065D714 /* AdventOfCode2022App.swift */; };
 		B1F63EE1293B2BD80065D714 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F63EE0293B2BD80065D714 /* ContentView.swift */; };
 		B1F63EE3293B2BDD0065D714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F63EE2293B2BDD0065D714 /* Assets.xcassets */; };
@@ -79,6 +81,7 @@
 		B153476D294311DC00A394F8 /* AoCDay9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AoCDay9.swift; sourceTree = "<group>"; };
 		B15347702943120A00A394F8 /* inputday9example.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = inputday9example.txt; path = AdventOfCode2022/inputday9example.txt; sourceTree = SOURCE_ROOT; };
 		B15347732943D4B900A394F8 /* inputday9.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday9.txt; sourceTree = "<group>"; };
+		B15347762943F30F00A394F8 /* inputday9example2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = inputday9example2.txt; sourceTree = "<group>"; };
 		B1F63EDB293B2BD80065D714 /* AdventOfCode2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F63EDE293B2BD80065D714 /* AdventOfCode2022App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2022App.swift; sourceTree = "<group>"; };
 		B1F63EE0293B2BD80065D714 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 				B153475E29412AEA00A394F8 /* inputday7.txt */,
 				B15347612941C65100A394F8 /* inputday8example.txt */,
 				B153476A294208AE00A394F8 /* inputday8Example2 */,
+				B15347762943F30F00A394F8 /* inputday9example2.txt */,
 				B15347642941C67600A394F8 /* AoCDay8.swift */,
 				B15347672942064800A394F8 /* inputday8.txt */,
 			);
@@ -279,6 +283,7 @@
 				B1F63F18293C955D0065D714 /* inputRucksacks.txt in Resources */,
 				B1F63EE3293B2BDD0065D714 /* Assets.xcassets in Resources */,
 				B1F63F0E293B3BF50065D714 /* inputday2.txt in Resources */,
+				B15347772943F30F00A394F8 /* inputday9example2.txt in Resources */,
 				B15347682942064800A394F8 /* inputday8.txt in Resources */,
 				B1F63F1E293E3CBE0065D714 /* inputday4.txt in Resources */,
 				B1F63F21293E53250065D714 /* inputday5.txt in Resources */,
@@ -303,6 +308,7 @@
 				B1F63F1F293E3CBE0065D714 /* inputday4.txt in Resources */,
 				B15347752943D4B900A394F8 /* inputday9.txt in Resources */,
 				B1F63F22293E53250065D714 /* inputday5.txt in Resources */,
+				B15347782943F30F00A394F8 /* inputday9example2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
