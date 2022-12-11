@@ -17,6 +17,11 @@ extension String {
     func parseIntoLines() -> [String] {
         return  self.split(separator: "\n").map { String($0) }
     }
+    
+    func parseIntoWords() -> [String] {
+        return  self.split(separator: " ").map { String($0) }
+    }
+    
     subscript(idx: Int) -> String {
         String(self[index(startIndex, offsetBy: idx)])
     }

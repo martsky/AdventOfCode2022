@@ -75,14 +75,14 @@ final class AdventOfCode2022Tests: XCTestCase {
     }
     /*
      [D]
- [N] [C]
- [Z] [M] [P]
-  1   2   3
-
- move 1 from 2 to 1
- move 3 from 1 to 3
- move 2 from 2 to 1
- move 1 from 1 to 2
+     [N] [C]
+     [Z] [M] [P]
+     1   2   3
+     
+     move 1 from 2 to 1
+     move 3 from 1 to 3
+     move 2 from 2 to 1
+     move 1 from 1 to 2
      */
     func testAoC5puzzle1Example() throws {
         let aoc = AoCDay5()
@@ -96,7 +96,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         XCTAssertEqual("P", configuration.stacks[2]!.peek())
         XCTAssertNil(configuration.stacks[3], " there should not be a third stack")
         print("\(configuration)")
-//        XCTAssertEqual("CMZ", "result was \(result) but should have been CMZ")
+        //        XCTAssertEqual("CMZ", "result was \(result) but should have been CMZ")
         
         // check amount
         XCTAssertEqual(1, instructions.instructions[0].amount, "amount not correctly parsed in instructions")
@@ -118,7 +118,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         configuration.execute1(instructions)
         result = configuration.getTopCrates()
         XCTAssertEqual("CMZ", result, "configuration error")
-
+        
         
         print ("result is:\n\(result)")
     }
@@ -130,7 +130,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         let (configuration, instructions) = aoc.parseIntoParts(lines: input)
         configuration.execute1(instructions)
         result = configuration.getTopCrates()
-//        XCTAssertEqual("CMZ", result, "configuration error")
+        //        XCTAssertEqual("CMZ", result, "configuration error")
         print ("result is:\n\(result)")
     }
     
@@ -152,7 +152,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         let (configuration, instructions) = aoc.parseIntoParts(lines: input)
         configuration.execute2(instructions)
         result = configuration.getTopCrates()
-//        XCTAssertEqual("MCD", result, "configuration error")
+        //        XCTAssertEqual("MCD", result, "configuration error")
         print ("result is:\n\(result)")
     }
     
@@ -362,7 +362,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         
         var tailPos = tail.curPos()
         var headPos = head.move(cmd: .Up)
-
+        
         XCTAssertEqual(headPos.x, 0)
         XCTAssertEqual(headPos.y, 1)
         if let tailCmd = tail.calcCommand(headPosition: headPos) {
@@ -386,7 +386,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         XCTAssertTrue(tail.visited.contains(Position(0,0)))
         XCTAssertTrue(tail.visited.contains(Position(0,1)))
         XCTAssertEqual(2, tail.visited.count)
-
+        
         
         // head moved right
         headPos = head.move(cmd: .Right)
@@ -430,6 +430,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         XCTAssertEqual(tailPos.x, 1)
         XCTAssertEqual(tailPos.y, 2)
         
+        // let's build us a snake containing of a head and a tail. That's much nicer.
         // now we move the whole snake to the left
         let body = [tail]
         var snake = Snake(head: head, body: body)
@@ -457,8 +458,7 @@ final class AdventOfCode2022Tests: XCTestCase {
         let aoc = AoCDay9()
         //parse the input into a program containing a series of commands
         let commands = aoc.parse(input)
-        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
-        //and keep a history of visited locations as [x,y] coordinates
+        //move the head in an (infinite) matrix
         let head = Head()
         let body = [Tail()]
         var snake = Snake(head: head, body: body)
@@ -476,10 +476,7 @@ final class AdventOfCode2022Tests: XCTestCase {
     func testDay91() throws {
         let input = try Utils.readFile("inputday9")
         let aoc = AoCDay9()
-        //parse the input into a program containing a series of commands
         let commands = aoc.parse(input)
-        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
-        //and keep a history of visited locations as [x,y] coordinates
         let head = Head()
         let body = [Tail()]
         var snake = Snake(head: head, body: body)
@@ -498,10 +495,7 @@ final class AdventOfCode2022Tests: XCTestCase {
     func testDay92Example() throws {
         let input = try Utils.readFile("inputday9example2")
         let aoc = AoCDay9()
-        //parse the input into a program containing a series of commands
         let commands = aoc.parse(input)
-        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
-        //and keep a history of visited locations as [x,y] coordinates
         let head = Head()
         let body = [Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail()]
         var snake = Snake(head: head, body: body)
@@ -520,10 +514,7 @@ final class AdventOfCode2022Tests: XCTestCase {
     func testDay92() throws {
         let input = try Utils.readFile("inputday9")
         let aoc = AoCDay9()
-        //parse the input into a program containing a series of commands
         let commands = aoc.parse(input)
-        //move the head in an (infinite) matrix. When asking the head which location it is, give back the position as coordinates [x,y]
-        //and keep a history of visited locations as [x,y] coordinates
         let head = Head()
         let body = [Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail(), Tail()]
         var snake = Snake(head: head, body: body)
@@ -536,6 +527,91 @@ final class AdventOfCode2022Tests: XCTestCase {
             }
         }
         print("visited: \(snake.tail().visited.count)")
-//        XCTAssertEqual(6464, snake.tail().visited.count)
+        XCTAssertEqual(2604, snake.tail().visited.count)
+    }
+    
+    func testDay10SimpleExample() throws {
+        let input =
+        """
+        noop
+        addx 3
+        addx -5
+        """
+        let aoc = AoCDay10()
+        let instructions = aoc.parse(input)
+        var signalStrength = 0
+        let testCycles = [5]
+        let program = CommProgram(program: instructions) { registerX, timer in
+            print("x = \(registerX)")
+            if testCycles.contains(timer) {
+                signalStrength += timer * registerX
+                print("testing signal: x = \(registerX), timer = \(timer), strength = \(signalStrength)")
+                XCTAssertEqual(5, timer)
+                XCTAssertEqual(4, registerX)
+            }
+        }
+        program.run(end: 5) // run for X cycles
+        XCTAssertEqual(20, signalStrength)
+        print ("signalStrength: \(signalStrength)")
+    }
+    
+    func testDay10ComplexExample() throws {
+        let input = try Utils.readFile("inputday10example")
+        let aoc = AoCDay10()
+        let instructions = aoc.parse(input)
+        var signalStrength = 0
+        let testCycles = [20,60,100,140,180,220]
+        let program = CommProgram(program: instructions) { registerX, timer in
+            print("x = \(registerX)")
+            if testCycles.contains(timer) {
+                signalStrength += timer * registerX
+                print("testing signal: x = \(registerX), timer = \(timer), strength = \(signalStrength)")
+            }
+        }
+        program.run(end: 220) // run for X cycles
+        print ("signalStrength: \(signalStrength)")
+        XCTAssertEqual(13140, signalStrength)
+    }
+    
+    func testDay10Puzzle1() throws {
+        let input = try Utils.readFile("inputday10")
+        let aoc = AoCDay10()
+        let instructions = aoc.parse(input)
+        var signalStrength = 0
+        let testCycles = [20,60,100,140,180,220]
+        let program = CommProgram(program: instructions) { registerX, timer in
+            if testCycles.contains(timer) {
+                signalStrength += timer * registerX
+                print("testing signal: x = \(registerX), timer = \(timer), strength = \(signalStrength)")
+            }
+        }
+        program.run(end: 220) // run for X cycles
+        print ("signalStrength: \(signalStrength)")
+    }
+    
+    func testDay10Puzzle2ComplexExample() throws {
+        let input = try Utils.readFile("inputday10example")
+        let aoc = AoCDay10()
+        let instructions = aoc.parse(input)
+        let crt = CRT()
+        let program = CommProgram(program: instructions) { registerX, timer in
+            print("signal: x = \(registerX), timer = \(timer)")
+            crt.draw(cycle: timer, x: registerX)
+        }
+        program.run(end: 240) // run for X cycles
+        print(crt.picture)
+    }
+    
+    func testDay10Puzzle2() throws {
+        let input = try Utils.readFile("inputday10")
+        let aoc = AoCDay10()
+        let instructions = aoc.parse(input)
+        let crt = CRT()
+        let program = CommProgram(program: instructions) { registerX, timer in
+            print("signal: x = \(registerX), timer = \(timer)")
+            crt.draw(cycle: timer, x: registerX)
+        }
+        program.run(end: 240) // run for X cycles
+        print(crt.picture)
     }
 }
