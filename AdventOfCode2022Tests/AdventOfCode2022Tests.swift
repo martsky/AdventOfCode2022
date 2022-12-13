@@ -614,4 +614,103 @@ final class AdventOfCode2022Tests: XCTestCase {
         program.run(end: 240) // run for X cycles
         print(crt.picture)
     }
+    
+    func testDay11ParssingMonkeys() throws {
+        // parse input to monkeys
+        let lines = try Utils.readFile("inputday11example").parseIntoLines()
+        let game = KeepAwayGame()
+        game.parse(lines: lines)
+        let monkeys = game.monkeys
+        XCTAssertEqual(79, monkeys[0]!.items[0])
+        XCTAssertEqual(98, monkeys[0]!.items[1])
+        XCTAssertEqual(Operator.multOp, monkeys[0]!.operation.op)
+        XCTAssertEqual(19, monkeys[0]!.operation.operand)
+        XCTAssertEqual(23, monkeys[0]!.testDivisible)
+        XCTAssertEqual(2, monkeys[0]!.outcome[true])
+        XCTAssertEqual(3, monkeys[0]!.outcome[false])
+    }
+    
+    func testDay11Puzzle1Example1() throws {
+        // parse input to monkeys
+        let lines = try Utils.readFile("inputday11example").parseIntoLines()
+        // parse into dictionary, the key is the identifier of the monkey
+        let game = KeepAwayGame()
+        game.parse(lines: lines)
+        let monkeys = game.monkeys
+        //let's play the game
+        for i in 0...19 { // 20 rounds
+            for id in monkeys.keys.sorted() {
+                let monkey = monkeys[id]!
+                game.inspectItems(monkey: monkey) { worryLevel in
+                    return Int(round(Float(worryLevel / 3)))
+                }
+            }
+            if i == 0 {
+                XCTAssertEqual(20, monkeys[0]?.items[0])
+                XCTAssertEqual(23, monkeys[0]?.items[1])
+                XCTAssertEqual(27, monkeys[0]?.items[2])
+                XCTAssertEqual(26, monkeys[0]?.items[3])
+                XCTAssertEqual(2080, monkeys[1]?.items[0])
+                XCTAssertEqual(25, monkeys[1]?.items[1])
+                XCTAssertEqual(167, monkeys[1]?.items[2])
+                XCTAssertEqual(207, monkeys[1]?.items[3])
+                XCTAssertEqual(401, monkeys[1]?.items[4])
+                XCTAssertEqual(1046, monkeys[1]?.items[5])
+                XCTAssertEqual(0, monkeys[2]?.items.count)
+                XCTAssertEqual(0, monkeys[3]?.items.count)
+                
+            }
+        }
+        XCTAssertEqual(101, monkeys[0]!.inspected)
+        XCTAssertEqual(95, monkeys[1]!.inspected)
+        XCTAssertEqual(7, monkeys[2]!.inspected)
+        XCTAssertEqual(105, monkeys[3]!.inspected)
+        let sortedMonkeyLevels:[Int] = monkeys.values.map { $0.inspected }.sorted()
+        let monkeyBusinessLevel = sortedMonkeyLevels[sortedMonkeyLevels.count-1] * sortedMonkeyLevels[sortedMonkeyLevels.count-2]
+        XCTAssertEqual(10605, monkeyBusinessLevel)
+    }
+    
+    func testDay11Puzzle1() throws {
+        // parse input to monkeys
+        let lines = try Utils.readFile("inputday11").parseIntoLines()
+        // parse into dictionary, the key is the identifier of the monkey
+        let game = KeepAwayGame()
+        game.parse(lines: lines)
+        let monkeys = game.monkeys
+        //let's play the game
+        for _ in 0...19 { // 20 rounds
+            for id in monkeys.keys.sorted() {
+                let monkey = monkeys[id]!
+                game.inspectItems(monkey: monkey) { worryLevel in
+                    return Int(round(Float(worryLevel / 3)))
+                }
+            }
+        }
+        let sortedMonkeyLevels:[Int] = monkeys.values.map { $0.inspected }.sorted()
+        let monkeyBusinessLevel = sortedMonkeyLevels[sortedMonkeyLevels.count-1] * sortedMonkeyLevels[sortedMonkeyLevels.count-2]
+        print("monkeyBusinessLevel = \(monkeyBusinessLevel)")
+        XCTAssertEqual(110888, monkeyBusinessLevel)
+    }
+ 
+    
+    func testDay11Puzzle2() throws {
+        // parse input to monkeys
+        let lines = try Utils.readFile("inputday11").parseIntoLines()
+        // parse into dictionary, the key is the identifier of the monkey
+        let game = KeepAwayGame()
+        game.parse(lines: lines)
+        let monkeys = game.monkeys
+        //let's play the game
+        for _ in 0...19 { // 20 rounds
+            for id in monkeys.keys.sorted() {
+                let monkey = monkeys[id]!
+                game.inspectItems(monkey: monkey) { $0 } ///pffft now i need some math knowledge. how do i avoid the arithmetic overflow
+            }
+        }
+        let sortedMonkeyLevels:[Int] = monkeys.values.map { $0.inspected }.sorted()
+        let monkeyBusinessLevel = sortedMonkeyLevels[sortedMonkeyLevels.count-1] * sortedMonkeyLevels[sortedMonkeyLevels.count-2]
+        print("monkeyBusinessLevel = \(monkeyBusinessLevel)")
+        XCTAssertEqual(110888, monkeyBusinessLevel)
+    }
+    
 }

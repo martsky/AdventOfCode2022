@@ -71,13 +71,6 @@ class CommProgram {
         self.duringExecution = afterExecution
     }
     
-    fileprivate func executeInstructionQueue() {
-        // execute 1 cycle in all commands in the queue
-        for inst in instructionQueue {
-            let executed = inst.exec(program: self)
-        }
-    }
-    
     func run(end: Int) {
 //        while !program.isEmpty || !instructionQueue.isEmpty {
         while timer < end {
@@ -111,7 +104,36 @@ class CommProgram {
             duringExecution(registerX, timer)
         }
     }
+    
+    // not needed
+    fileprivate func executeInstructionQueue() {
+        // execute 1 cycle in all commands in the queue
+        for inst in instructionQueue {
+            let res = inst.exec(program: self)
+            print(res)
+        }
+    }
+    
 }
+
+class CRT {
+    let lineLength = 40
+    var picture = ""
+    
+    func draw(cycle: Int, x: Int) {
+        // draw litPixel
+        let pixelPos = (cycle-1) % 40
+        if x == pixelPos || x == pixelPos - 1 || x == pixelPos + 1 {
+            picture.append("#")
+        } else {
+            picture.append(" ")
+        }
+        if pixelPos == 39 {
+            picture.append("\n")
+        } // carr return at end of crt line
+    }
+}
+
 
 class AoCDay10 {
     func parse(_ input: String) -> [CommInstruction] {
@@ -128,23 +150,5 @@ class AoCDay10 {
             instructions.append(CommInstruction(cmd: cmd, param: param))
         }
         return instructions
-    }
-}
-
-class CRT {
-    let lineLength = 40
-    var picture = ""
-    
-    func draw(cycle: Int, x: Int) {
-        // draw litPixel
-        let pixelPos = (cycle-1) % 40
-        if x == pixelPos || x == pixelPos - 1 || x == pixelPos + 1 {
-            picture.append("#")
-        } else {
-            picture.append(".")
-        }
-        if pixelPos == 39 {
-            picture.append("\n")
-        } // carr return at end of crt line
     }
 }
